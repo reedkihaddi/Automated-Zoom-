@@ -90,16 +90,7 @@ def read_message():
             call_info["url"] = j.geturl()
             break
 
-        # link = urlparse(i)
-        # if link.scheme == "https" and "zoom" in link.netloc:
-        #     call_info["url"] = link.geturl()
-        #     print("CURRENT URL" + i)
-        # meeting_id = re.search("(?<=id:).*", i, flags=re.IGNORECASE)
-        # password = re.search("(?<=password:).*", i, flags=re.IGNORECASE)
-        # if meeting_id:
-        #     call_info["meeting_id"] = meeting_id.group().strip()
-        # if password:
-        #     call_info["password"] = password.group().strip()
+ 
 
     return call_info
 
@@ -111,9 +102,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-# message _3Whw5 selectable-text invisible-space copyable-text
-# CHATS _210SC
-# TITLE LIST _3ko75 _5h6Y_ _3Whw5
-# _1qDvT _3R02z CONTACT LIST
-# _2kHpK click?
-# Bakaet 12th Pass
+
