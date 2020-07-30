@@ -15,6 +15,11 @@ userProfile = "C:\\Users\\BB\\AppData\\Local\\Google\\Chrome\\User Data\\Default
 
 options = webdriver.ChromeOptions()
 options.add_argument(r"user-data-dir=" + userProfile)
+prefs = {"protocol_handler.excluded_schemes.zoommtg": False}
+options.add_experimental_option("prefs", prefs)
+# options.add_experimental_option("prefs", {
+#     "protocol_handler": {"excluded_schemes": {"zoommtg": "false"}}
+# })
 driver = webdriver.Chrome(executable_path=r'.\chromedriver.exe', options=options)
 print("Starting Chrome.")
 driver.get("https://web.whatsapp.com/")
@@ -74,11 +79,11 @@ def read_message():
                 print("Found the link.")
                 call_info["url"] = link.geturl()
                 try:
-                    meeting_id = re.search("(?<=id:).*", urls[i+1], flags=re.IGNORECASE)
-                    password = re.search("(?<=password:).*", urls[i+1], flags=re.IGNORECASE)
+                    meeting_id = re.search("(?<=id:).*", urls[i + 1], flags=re.IGNORECASE)
+                    password = re.search("(?<=password:).*", urls[i + 1], flags=re.IGNORECASE)
 
                     if meeting_id:
-                        if call_info["url"] in urls[i+1]:
+                        if call_info["url"] in urls[i + 1]:
                             call_info["password"] = password.group().strip()
                             call_info["meeting_id"] = meeting_id.group().strip()
                 except NameError:
@@ -90,16 +95,29 @@ def read_message():
             call_info["url"] = j.geturl()
             break
 
- 
+        # link = urlparse(i)
+        # if link.scheme == "https" and "zoom" in link.netloc:
+        #     call_info["url"] = link.geturl()
+        #     print("CURRENT URL" + i)
+        # meeting_id = re.search("(?<=id:).*", i, flags=re.IGNORECASE)
+        # password = re.search("(?<=password:).*", i, flags=re.IGNORECASE)
+        # if meeting_id:
+        #     call_info["meeting_id"] = meeting_id.group().strip()
+        # if password:
+        #     call_info["password"] = password.group().strip()
 
     return call_info
 
 
 def main():
     search_message()
-    print(read_message())
+    return read_message()
 
-
-if __name__ == '__main__':
-    main()
-
+# if __name__ == '__main__':
+#     main()
+# message _3Whw5 selectable-text invisible-space copyable-text
+# CHATS _210SC
+# TITLE LIST _3ko75 _5h6Y_ _3Whw5
+# _1qDvT _3R02z CONTACT LIST
+# _2kHpK click?
+# Bakaet 12th Pass
